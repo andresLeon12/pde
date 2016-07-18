@@ -55,7 +55,7 @@
                     <div class="row">
                       <div class="col-100 tablet-100">
                         <h1>BIENVENIDO A DENTAPP</h1>
-                        <a href="#" ng-click="go('vistas/diagnostico.html')">Ir</a>
+                        <a href="#" ng-click="go('vistas/diagnostico.html')">Ir directo al diagnostico</a>
                       </div>
                     </div>
                     <div class="row">
@@ -198,7 +198,7 @@
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
-    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     function onLoad() {
@@ -208,6 +208,9 @@
     // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
+      document.addEventListener("backbutton", function(e){
+        navigator.app.exitApp();
+      }, false);
         document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline, false);
     }
