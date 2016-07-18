@@ -36,7 +36,6 @@
   		                <span>Atras</span>
   		            </a>
   		          </div>
-                <div class="center">DIAGNOSTICO</div>
                 <div class="right">
                 <a href="#" ng-click="Undo();" class="link">
                       <span>Deshacer</span>
@@ -51,53 +50,18 @@
             </div>
  
             <!-- Scrollable page content -->
-            <div class="page-content">
+            <div class="page-content" style="overflow: auto;">
               <div class="row">
-                      <div class="col-100 tablet-100">
-                        <h1 id="nombre_paciente">Paciente: <span style="color:teal;">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</span></h1>
-                        <div class="content-block-title" id="msj">{{zona_revision}}</div>
-                      </div>
-                    </div>
+                <div class="col-100 tablet-100">
+                  <h1 id="nombre_paciente">Paciente: <span style="color:teal;">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</span></h1>
+                  <div class="content-block-title" id="msj">{{zona_revision}}</div>
+                </div>
+              </div>
               <div class="line"></div>
               <input type="hidden" id="idP" value="" /> 
+              <input type="hidden" id="isOnline" value="" /> 
               <div class="container-canvas">
-                <canvas height="240" id='muelas' style="background-color:#e8eaf6"></canvas>
-              </div>
-              <!--<div class="container-menu">
-                <canvas width='180' height='340' id='menu' style="background-color:#fff"></canvas>
-              </div>
-              <div class="container-canvas">
-                <canvas width='660' height='180' id='dientes' style="background-color:#ffebee"></canvas>
-              </div>
-              <div class="container-canvas">
-                <canvas width='660' height='180' id='colmillos' style="background-color:#f3e5f5"></canvas>
-              </div>
-              <div class="container-canvas">
-                <canvas width='660' height='360' id='muelas' style="background-color:#e8eaf6"></canvas>
-              </div>-->
-              <!--<div class="container-canvas">
-                <canvas width='660' height='180' id='extras' style="background-color:#e0f2f1"></canvas>
-              </div>-->
-            </div>
-            <div class="popover popover-about">
-              algo escrito
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
+                <canvas height="240" width="1460" id='muelas' style="background-color:#e8eaf6"></canvas>
               </div>
             </div>
           </div>
@@ -114,9 +78,21 @@
     <script type="text/javascript" src="../js/diagnostico.js"></script>
     <script type="text/javascript" src="../cordova.js"></script>
     <script type="text/javascript">
-      var canvas = document.getElementById("muelas");
-      canvas.width  = window.innerWidth;
-      //canvas.height = window.innerHeight;
+      function onDeviceReady() {
+          document.addEventListener("offline", onOffline, false);
+          document.addEventListener("online", onOnline, false);
+      }
+
+      // Handle the offline event
+      //
+      function onOffline() {
+        alert("offline")
+        document.getElementById("isOnline").value = 0;
+      }
+      function onOnline() {
+        alert("online")
+        document.getElementById("isOnline").value = 1;
+      }
     </script>
 
   </body>
