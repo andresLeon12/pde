@@ -230,7 +230,7 @@
         var sesiones_guardadas = localStorage.getItem(sesiones_guardadas);
         alert("Guardar sesiones");
         for(i in sesiones_guardadas) {
-          $http.post("159.203.128.165:3000/info/nuevaInformacion", i).success(function(respuesta) {
+          $http.post("http://159.203.128.165:3000/info/nuevaInformacion", i).success(function(respuesta) {
             if(respuesta.status){
               /*isSave = true;
               $("#msj").html($scope.zona_revision+" - Información guardada. <i class='fa fa-check-circle'>");*/

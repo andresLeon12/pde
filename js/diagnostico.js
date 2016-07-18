@@ -964,5 +964,12 @@ app.controller('mainController', function($scope, $http){
 			sesiones_guardadas[sesiones_guardadas.length] = infoDientes;
 			localStorage.setItem("sesiones_guardadas", sesiones_guardadas);
 		}
+		application.addNotification({
+        		message: 'Información guardada',
+		        button: {
+		            text: 'Cerrar',
+		            color: 'lightgreen'
+		        }
+    		});
 	}
 });
