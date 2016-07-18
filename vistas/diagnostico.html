@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app='MainApp'>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Your app title -->
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS, iOS Theme -->
+    <link rel="stylesheet" href="../css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, material Theme -->
+    <link rel="stylesheet" href="../css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <!-- Path to your custom app styles-->
+    <!--<link rel='stylesheet' href='../css/bootstrap.css'/>-->
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body class="layout-null layout-white theme-bluegray" ng-controller="mainController">
+    <!-- Views -->
+    <div class="views tabs toolbar-fixed">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-fixed">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+ 
+            <!-- Top Navbar. In Material theme it should be inside of the page-->
+            <div class="navbar">
+              <div class="navbar-inner">
+              	<div class="left">
+  		            <a href="#" ng-click="go('info.html');" class="link">
+  		                <i class="fa fa-chevron-left"></i>
+  		                <span>Atras</span>
+  		            </a>
+  		          </div>
+                <div class="center">DIAGNOSTICO</div>
+                <div class="right">
+                <a href="#" ng-click="Undo();" class="link">
+                      <span>Deshacer</span>
+                      <i class="fa fa-undo"></i>
+                  </a>
+                  <a href="#" ng-click="Save();" class="link">
+                      <span>Guardar</span>
+                      <i class="fa fa-save"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+ 
+            <!-- Scrollable page content -->
+            <div class="page-content">
+              <div class="row">
+                      <div class="col-100 tablet-100">
+                        <h1 id="nombre_paciente">Paciente: <span style="color:teal;">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</span></h1>
+                        <div class="content-block-title" id="msj">{{zona_revision}}</div>
+                      </div>
+                    </div>
+              <div class="line"></div>
+              <input type="hidden" id="idP" value="" /> 
+              <div class="container-canvas">
+                <canvas height="240" id='muelas' style="background-color:#e8eaf6"></canvas>
+              </div>
+              <!--<div class="container-menu">
+                <canvas width='180' height='340' id='menu' style="background-color:#fff"></canvas>
+              </div>
+              <div class="container-canvas">
+                <canvas width='660' height='180' id='dientes' style="background-color:#ffebee"></canvas>
+              </div>
+              <div class="container-canvas">
+                <canvas width='660' height='180' id='colmillos' style="background-color:#f3e5f5"></canvas>
+              </div>
+              <div class="container-canvas">
+                <canvas width='660' height='360' id='muelas' style="background-color:#e8eaf6"></canvas>
+              </div>-->
+              <!--<div class="container-canvas">
+                <canvas width='660' height='180' id='extras' style="background-color:#e0f2f1"></canvas>
+              </div>-->
+            </div>
+            <div class="popover popover-about">
+              algo escrito
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+	  <script type="text/javascript" src="../js/angular.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/easeljs-0.8.2.min.js"></script>
+    <!-- Path to your app js-->
+    <!--<script type="text/javascript" src="../js/bootstrap.js"></script>-->
+    <script type="text/javascript" src="../js/diagnostico.js"></script>
+    <script type="text/javascript">
+      var canvas = document.getElementById("muelas");
+      canvas.width  = window.innerWidth;
+      //canvas.height = window.innerHeight;
+    </script>
+    <script type="text/javascript" src="../cordova.js"></script>
+  </body>
+</html> 

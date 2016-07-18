@@ -1,0 +1,36 @@
+extends layout
+block content
+	.container(ng-controller='mainController')
+		.container-menu
+			canvas(width='180', height='480', id='menu', style="background-color:#fff")
+		.container-canvas
+			canvas.canvas(width='660', height='180', id='dientes', style="background-color:#ffebee")
+		.container-canvas
+			canvas.canvas(width='660', height='180', id='colmillos', style="background-color:#f3e5f5")
+		.container-canvas
+			canvas.canvas(width='660', height='360', id='muelas', style="background-color:#e8eaf6")
+		//.container-canvas
+			//canvas.canvas(width='660', height='180', id='extras', style="background-color:#e0f2f1")
+		.row
+			button.btn.primary(ng-click="Save()")
+				| Guardar
+
+Layout
+doctype html
+html(ng-app='MainApp')
+	head
+		title= title
+		meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(charset="utf-8")
+		link(rel='shortcut icon', type='image/x-icon', href='/images/logo.png')
+		link(rel='stylesheet', href='/css/bootstrap.css')
+		link(rel='stylesheet', href='/css/style.css')
+	include navbar
+	body!=body
+		block content
+	script(src="/js/jquery.min.js")
+	script(src="/js/angular.min.js")
+	script(src="/js/bootstrap.js")
+	script(src='/js/easeljs-0.8.2.min.js')
+	script(src="/js/app.js")

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html ng-app='MainApp'>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Your app title -->
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS, iOS Theme -->
+    <link rel="stylesheet" href="../css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, material Theme -->
+    <link rel="stylesheet" href="../css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body class="layout-null layout-white theme-bluegray" ng-controller="pacienteController">
+    <!-- Views -->
+    <div class="views tabs toolbar-fixed">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-fixed">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+ 
+            <!-- Top Navbar. In Material theme it should be inside of the page-->
+            <div class="navbar">
+              <div class="navbar-inner">
+              	<div class="left">
+		            <a href="#" ng-click="go('../index.html');" class="link">
+		                <i class="fa fa-chevron-left"></i>
+		                <span>Atras</span>
+		            </a>
+		        </div>
+                <!--<div class="center">DENTAL</div>-->
+              </div>
+            </div>
+
+            <!-- Bottom Toolbar. In Material theme it should be inside of the page-->
+            <div class="toolbar toolbar-bottom tabbar tabbar-labels theme-bluegray">
+              <div class="toolbar-inner">
+                <a href="#home" class="tab-link active">
+                  <i class="fa fa-home"></i>
+                  <span class="tabbar-label">Inicio</span>
+                </a>
+                <a href="#pde" class="tab-link">
+                  <i class="fa fa-heartbeat"></i>
+                  <span class="tabbar-label">PDE</span>
+                </a>
+                <a href="#rayosx" class="tab-link">
+                  <i class="fa fa-close"></i>
+                  <span class="tabbar-label">Rayos X</span>
+                </a>
+                <a href="#panoramica" class="tab-link">
+                  <i class="fa fa-camera"></i>
+                  <span class="tabbar-label">Panorámica</span>
+                </a>
+              </div>
+            </div>
+ 
+            <!-- Scrollable page content -->
+            <div class="page-content">
+              <div class="tabs-swipeable-wrap">
+                <div class="tabs">
+                  <div class="tab active" id="home">
+                    <div class="row">
+                      <div class="col-100 tablet-100">
+                      	<h1 id="nombre_paciente">Paciente: <span style="color:teal;">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</span></h1>
+                      	<div class="content-block-title">{{paciente.RCURP}}</div>
+                      </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="row">
+                    	<div class="tablet-10"></div>
+                    	<div class="col-100 tablet-80">
+                    		<div class="card demo-card-header-pic">
+							  <div class="card-content">
+							    <div class="card-content-inner">
+							      <p class="color-gray">ZONA SUPERIOR IZQUIERDA</p>
+							      <p>Los dientes de la zona superior izquierda...</p>
+							    </div>
+							  </div>
+							  <div class="card-footer" >
+							  	<a href="#" class="link"></a>
+							    <a href="#" ng-click="editar(1)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+							  </div>
+							</div>
+                    	</div>
+                    	<div class="tablet-10"></div>
+                    </div>
+                    <div class="row">
+                    	<div class="tablet-10"></div>
+                    	<div class="col-100 tablet-80">
+                    		<div class="card demo-card-header-pic">
+							  <div class="card-content">
+							    <div class="card-content-inner">
+							      <p class="color-gray">ZONA SUPERIOR DERECHA</p>
+							      <p>Los dientes de la zona superior derecha...</p>
+							    </div>
+							  </div>
+							  <div class="card-footer">
+							  	<a href="#" class="link"></a>
+							    <a href="#" ng-click="editar(2)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+							  </div>
+							</div>
+                    	</div>
+                    	<div class="tablet-10"></div>
+                    </div>
+                    <div class="row">
+                    	<div class="tablet-10"></div>
+                    	<div class="col-100 tablet-80">
+                    		<div class="card demo-card-header-pic">
+							  <div class="card-content">
+							    <div class="card-content-inner">
+							      <p class="color-gray">ZONA INFERIOR IZQUIERDA</p>
+							      <p>Los dientes de la zona inferior izquierda...</p>
+							    </div>
+							  </div>
+							  <div class="card-footer">
+							  	<a href="#" class="link"></a>
+							    <a href="#" ng-click="editar(3)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+							  </div>
+							</div>
+                    	</div>
+                    	<div class="tablet-10"></div>
+                    </div>
+                    <div class="row">
+                    	<div class="tablet-10"></div>
+                    	<div class="col-100 tablet-80">
+                    		<div class="card demo-card-header-pic">
+							  <div class="card-content">
+							    <div class="card-content-inner">
+							      <p class="color-gray">ZONA INFERIOR DERECHA</p>
+							      <p>Los dientes de la zona inferior derecha...</p>
+							    </div>
+							  </div>
+							  <div class="card-footer">
+							  	<a href="#" class="link"></a>
+							    <a href="#" ng-click="editar(4)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+							  </div>
+							</div>
+                    	</div>
+                    	<div class="tablet-10"></div>
+                    </div>
+                  </div>  
+                  <div class="tab" id="search">
+                    Buscar
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="../js/app.js"></script>
+  </body>
+</html> 
