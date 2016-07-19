@@ -16,7 +16,7 @@
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="../css/styles.css">
   </head>
-  <body class="layout-null layout-white theme-bluegray" ng-controller="pacienteController">
+  <body class="layout-null layout-white theme-bluegray" ng-controller="pacienteController" onload="onLoad()">
     <!-- Views -->
     <div class="views tabs toolbar-fixed">
       <!-- Your main view, should have "view-main" class -->
@@ -71,6 +71,7 @@
                       	<h1 id="nombre_paciente">Paciente: <span style="color:teal;">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</span></h1>
                       	<div class="content-block-title">{{paciente.RCURP}}</div>
                       </div>
+                      <div id="online"></div>
                     </div>
                     <div class="line"></div>
                     <div class="row">
@@ -162,5 +163,42 @@
     <script type="text/javascript" src="../js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript">
+
+      function onLoad() {
+          document.addEventListener("deviceready", onDeviceReady, false);
+      }
+
+      function onDeviceReady() {
+        document.addEventListener("backbutton", function(e){
+          alert("backbutton");
+          navigator.app.backHistory();
+        }, false);
+          document.addEventListener("offline", onOffline, false);
+          document.addEventListener("online", onOnline, false);
+      }
+      function onOffline() {
+        //alert("offline")
+        document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
+      }
+      function onOnline() {
+        //alert("online")
+        document.getElementById("online").innerHTML = "";
+        if(localStorage.getItem("sesiones_guardadas") != null){
+          var sesiones_guardadas = localStorage.getItem(sesiones_guardadas);
+          alert("Guardar sesiones");
+          for(i in sesiones_guardadas) {
+            $http.post("http://159.203.128.165:3000/info/nuevaInformacion", i).success(function(respuesta) {
+              if(respuesta.status){
+                /*isSave = true;
+                $("#msj").html($scope.zona_revision+" - Información guardada. <i class='fa fa-check-circle'>");*/
+              }
+            })
+          }
+          localStorage.removeItem("sesiones_guardadas");
+        }
+      }
+    </script>
   </body>
 </html> 

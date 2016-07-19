@@ -16,7 +16,7 @@
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body class="layout-null layout-white theme-bluegray" ng-controller="pacienteController">
+  <body class="layout-null layout-white theme-bluegray" ng-controller="pacienteController" onload="onLoad()">
     <!-- Views -->
     <div class="views tabs toolbar-fixed">
       <!-- Your main view, should have "view-main" class -->
@@ -55,7 +55,7 @@
                     <div class="row">
                       <div class="col-100 tablet-100">
                         <h1>BIENVENIDO A DENTAPP</h1>
-                        <a href="#" ng-click="go('vistas/diagnostico.html')">Ir directo al diagnostico</a>
+                        <div id="online"></div>
                       </div>
                     </div>
                     <div class="row">

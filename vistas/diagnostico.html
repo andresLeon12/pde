@@ -17,7 +17,7 @@
     <!--<link rel='stylesheet' href='../css/bootstrap.css'/>-->
     <link rel="stylesheet" href="../css/styles.css">
   </head>
-  <body class="layout-null layout-white theme-bluegray" ng-controller="mainController">
+  <body class="layout-null layout-white theme-bluegray" ng-controller="mainController" onload="onLoad()">
     <!-- Views -->
     <div class="views tabs toolbar-fixed">
       <!-- Your main view, should have "view-main" class -->
@@ -78,7 +78,16 @@
     <script type="text/javascript" src="../js/diagnostico.js"></script>
     <script type="text/javascript" src="../cordova.js"></script>
     <script type="text/javascript">
+
+      function onLoad() {
+          document.addEventListener("deviceready", onDeviceReady, false);
+      }
+
       function onDeviceReady() {
+        document.addEventListener("backbutton", function(e){
+          alert("backbutton");
+          navigator.app.backHistory();
+        }, false);
           document.addEventListener("offline", onOffline, false);
           document.addEventListener("online", onOnline, false);
       }
