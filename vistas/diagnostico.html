@@ -85,8 +85,7 @@
 
       function onDeviceReady() {
         document.addEventListener("backbutton", function(e){
-          alert("backbutton");
-          navigator.app.backHistory();
+          window.location.href = 'info.html';
         }, false);
           document.addEventListener("offline", onOffline, false);
           document.addEventListener("online", onOnline, false);
@@ -94,11 +93,9 @@
       // Handle the offline event
       //
       function onOffline() {
-        alert("offline")
         document.getElementById("isOnline").value = 0;
       }
       function onOnline() {
-        alert("online")
         document.getElementById("isOnline").value = 1;
       }
     </script>

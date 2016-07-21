@@ -944,11 +944,20 @@ app.controller('mainController', function($scope, $http){
 
 	$scope.Save = function()
 	{
-		infoDientes.idPaciente = datos._id;
+		infoDientes.idPaciente = datos.RCURP;
 		infoDientes.posicion = localStorage.getItem("zona");
 		var canvas = document.getElementById("muelas");
 		infoDientes.urlFile = canvas.toDataURL();
-		var isOnline = $("#isOnline").val();
+		var sesiones_guardadas = []
+		if (localStorage.getItem("sesiones_guardadas") == null) 
+			localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
+
+		sesiones_guardadas = JSON.parse(localStorage.getItem("sesiones_guardadas"));
+		//localStorage.removeItem("sesiones_guardadas")
+		sesiones_guardadas[sesiones_guardadas.length] = infoDientes;
+			
+		localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
+		/*var isOnline = 0;//$("#isOnline").val();
 		alert(isOnline);
 		if(isOnline == 1)
 		{
@@ -959,11 +968,17 @@ app.controller('mainController', function($scope, $http){
 				}
 			})
 		}else {
-			var sesiones_guardadas = (localStorage.getItem("sesiones_guardadas") == null) ? [] : localStorage.getItem("sesiones_guardadas");
-			alert(sesiones_guardadas);
+			var sesiones_guardadas = []
+			if (localStorage.getItem("sesiones_guardadas") == null) 
+				localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
+
+			sesiones_guardadas = JSON.parse(localStorage.getItem("sesiones_guardadas"));
+
+			//localStorage.removeItem("sesiones_guardadas")
 			sesiones_guardadas[sesiones_guardadas.length] = infoDientes;
-			localStorage.setItem("sesiones_guardadas", sesiones_guardadas);
-		}
+			
+			localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
+		}*/
 		application.addNotification({
         		message: 'Información guardada',
 		        button: {

@@ -55,9 +55,18 @@
                     <div class="row">
                       <div class="col-100 tablet-100">
                         <h1>BIENVENIDO A DENTAPP</h1>
+                        <!-- Agregue este boton que se habilita cuando tienes información alamcenada en el telefono -->
+                        <a id="save" href="#" ng-click="Save()" class="center button button-big button-fill button-raised color-teal" style="display: none;">Guardar</a>
                         <div id="online"></div>
                       </div>
                     </div>
+                    <div class="row" id="cargando" style="display: none;">
+                      <div class="col-100">
+                        Espere un momento...<br>
+                        <span style="width:42px; height:42px" class="preloader"></span>
+                      </div>
+                    </div>
+                    <!-- Hasta aca -->
                     <div class="row">
                       <div class="col-10"></div>
                       <div class="col-80">
@@ -200,16 +209,21 @@
     <script type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
-
+    /* Aca tambien le agregue unas cosas: en el onLoad le puse que oculte el boton de arriba */
     function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
+      if(localStorage.getItem("sesiones_guardadas") != null){
+        $("#save").css("display", "block");
+      }else{
+        $("#save").css("display", "none");
+      }
+      document.addEventListener("deviceready", onDeviceReady, false);
     }
 
     // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
+      /* Le agregue esto para cuando presionas el boton de atras de la tablet lo tiene en todos los html */
       document.addEventListener("backbutton", function(e){
-        alert("backbutton");
         navigator.app.exitApp();
       }, false);
 
@@ -226,20 +240,8 @@
     function onOnline() {
       //alert("online")
       document.getElementById("online").innerHTML = "";
-      if(localStorage.getItem("sesiones_guardadas") != null){
-        var sesiones_guardadas = localStorage.getItem(sesiones_guardadas);
-        alert("Guardar sesiones");
-        for(i in sesiones_guardadas) {
-          $http.post("http://159.203.128.165:3000/info/nuevaInformacion", i).success(function(respuesta) {
-            if(respuesta.status){
-              /*isSave = true;
-              $("#msj").html($scope.zona_revision+" - Información guardada. <i class='fa fa-check-circle'>");*/
-            }
-          })
-        }
-        localStorage.removeItem("sesiones_guardadas");
-      }
     }
+
     </script>
   </body>
 </html>

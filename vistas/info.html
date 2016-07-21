@@ -75,77 +75,66 @@
                     </div>
                     <div class="line"></div>
                     <div class="row">
-                    	<div class="tablet-10"></div>
-                    	<div class="col-100 tablet-80">
+                    	<div class="tablet-10 col-10"></div>
+                    	<div class="col-40 tablet-40">
                     		<div class="card demo-card-header-pic">
-							  <div class="card-content">
-							    <div class="card-content-inner">
-							      <p class="color-gray">ZONA SUPERIOR IZQUIERDA</p>
-							      <p>Los dientes de la zona superior izquierda...</p>
-							    </div>
-							  </div>
-							  <div class="card-footer" >
-							  	<a href="#" class="link"></a>
-							    <a href="#" ng-click="editar(1)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
-							  </div>
-							</div>
+							            <div class="card-content">
+							              <div class="card-content-inner">
+							                <p class="color-gray">ZONA SUPERIOR IZQUIERDA</p>
+							              </div>
+							            </div>
+							            <div class="card-footer" >
+          							  	<a href="#" class="link"></a>
+          							    <a href="#" ng-click="editar(1)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+          							  </div>
+          							</div>
                     	</div>
-                    	<div class="tablet-10"></div>
+                      <div class="col-40 tablet-40">
+                        <div class="card demo-card-header-pic">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                              <p class="color-gray">ZONA SUPERIOR DERECHA</p>
+                            </div>
+                          </div>
+                          <div class="card-footer" >
+                            <a href="#" class="link"></a>
+                            <a href="#" ng-click="editar(2)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    	<div class="tablet-10 col-10"></div>
                     </div>
                     <div class="row">
-                    	<div class="tablet-10"></div>
-                    	<div class="col-100 tablet-80">
-                    		<div class="card demo-card-header-pic">
-							  <div class="card-content">
-							    <div class="card-content-inner">
-							      <p class="color-gray">ZONA SUPERIOR DERECHA</p>
-							      <p>Los dientes de la zona superior derecha...</p>
-							    </div>
-							  </div>
-							  <div class="card-footer">
-							  	<a href="#" class="link"></a>
-							    <a href="#" ng-click="editar(2)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
-							  </div>
-							</div>
-                    	</div>
-                    	<div class="tablet-10"></div>
+                      <div class="tablet-10 col-10"></div>
+                      <div class="col-40 tablet-40">
+                        <div class="card demo-card-header-pic">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                              <p class="color-gray">ZONA INFERIOR IZQUIERDA</p>
+                            </div>
+                          </div>
+                          <div class="card-footer" >
+                            <a href="#" class="link"></a>
+                            <a href="#" ng-click="editar(3)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-40 tablet-40">
+                        <div class="card demo-card-header-pic">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                              <p class="color-gray">ZONA INFERIOR DERECHA</p>
+                            </div>
+                          </div>
+                          <div class="card-footer" >
+                            <a href="#" class="link"></a>
+                            <a href="#" ng-click="editar(4)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tablet-10 col-10"></div>
                     </div>
-                    <div class="row">
-                    	<div class="tablet-10"></div>
-                    	<div class="col-100 tablet-80">
-                    		<div class="card demo-card-header-pic">
-							  <div class="card-content">
-							    <div class="card-content-inner">
-							      <p class="color-gray">ZONA INFERIOR IZQUIERDA</p>
-							      <p>Los dientes de la zona inferior izquierda...</p>
-							    </div>
-							  </div>
-							  <div class="card-footer">
-							  	<a href="#" class="link"></a>
-							    <a href="#" ng-click="editar(3)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
-							  </div>
-							</div>
-                    	</div>
-                    	<div class="tablet-10"></div>
-                    </div>
-                    <div class="row">
-                    	<div class="tablet-10"></div>
-                    	<div class="col-100 tablet-80">
-                    		<div class="card demo-card-header-pic">
-							  <div class="card-content">
-							    <div class="card-content-inner">
-							      <p class="color-gray">ZONA INFERIOR DERECHA</p>
-							      <p>Los dientes de la zona inferior derecha...</p>
-							    </div>
-							  </div>
-							  <div class="card-footer">
-							  	<a href="#" class="link"></a>
-							    <a href="#" ng-click="editar(4)" class="link">Editar <i class="fa fa-chevron-right"></i></a>
-							  </div>
-							</div>
-                    	</div>
-                    	<div class="tablet-10"></div>
-                    </div>
+                    	
                   </div>  
                   <div class="tab" id="search">
                     Buscar
@@ -172,8 +161,7 @@
 
       function onDeviceReady() {
         document.addEventListener("backbutton", function(e){
-          alert("backbutton");
-          navigator.app.backHistory();
+          window.location.href = "../index.html";
         }, false);
           document.addEventListener("offline", onOffline, false);
           document.addEventListener("online", onOnline, false);
@@ -183,19 +171,7 @@
         document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
       }
       function onOnline() {
-        //alert("online")
-        document.getElementById("online").innerHTML = "";
-        if(localStorage.getItem("sesiones_guardadas") != null){
-          var sesiones_guardadas = localStorage.getItem(sesiones_guardadas);
-          alert("Guardar sesiones");
-          for(i in sesiones_guardadas) {
-            $http.post("http://159.203.128.165:3000/info/nuevaInformacion", i).success(function(respuesta) {
-              if(respuesta.status){
-                /*isSave = true;
-                $("#msj").html($scope.zona_revision+" - Información guardada. <i class='fa fa-check-circle'>");*/
-              }
-            })
-          }
+       
           localStorage.removeItem("sesiones_guardadas");
         }
       }
