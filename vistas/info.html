@@ -66,6 +66,31 @@
               <div class="tabs-swipeable-wrap">
                 <div class="tabs">
                   <div class="tab active" id="home">
+                  <div class="card facebook-card">
+                    <div class="card-header no-border">
+                      <div class="facebook-avatar"><img src="../img/logo.png" width="64" height="64"></div>
+                      <div class="facebook-name">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</div>
+                      <div class="facebook-date">{{paciente.RCURP}}</div>
+                    </div>
+                    <div class="card-content">
+                      <br>
+                      <div class="line"></div>
+                      <div class="row">
+                        <div class="col-5"></div>
+                        <div class="col-90">
+                          <a ng-click="go('diagnostico_total.html')" style="margin-bottom: 5px;" class="button button-big button-fill button-raised color-red">Ausentes / Restos</a>
+                          <a href="#" class="zonas button button-big button-fill button-raised color-teal">Individuales</a>
+                        </div>
+                        <div class="col-5"></div>
+                      </div>
+                    </div>
+                    <div class="card-footer no-border">
+                      <a href="#" class="link"> Tomar foto </a>
+                      <a href="#" class="link"> Tomar panorámica </a>
+                    </div>
+                  </div>
+                  
+                  <!--
                     <div class="row">
                       <div class="col-100 tablet-100">
                       	<h1 id="nombre_paciente">Paciente: <span style="color:teal;">{{paciente.RNOM}} {{paciente.RAPP}} {{paciente.RAPM}}</span></h1>
@@ -74,6 +99,17 @@
                       <div id="online"></div>
                     </div>
                     <div class="line"></div>
+                    
+                    <div class="content-block-inner">
+                      <p>
+                        <img data-src="http://lorempixel.com/500/500/nature/1" width="100%" class="lazy lazy-fadeIn">
+                      </p>
+                    </div>
+                    <div class="row">
+                      <div class="col-10"></div>  
+                      <div class="col-80"><a href="#" class="button button-big button-fill button-raised color-pink">Ausentes / Restos</a></div>  
+                      <div class="col-10"></div>  
+                    </div>
                     <div class="row">
                     	<div class="tablet-10 col-10"></div>
                     	<div class="col-40 tablet-40">
@@ -134,8 +170,8 @@
                       </div>
                       <div class="tablet-10 col-10"></div>
                     </div>
-                    	
-                  </div>  
+                    	-->
+                  </div> 
                   <div class="tab" id="search">
                     Buscar
                   </div>
@@ -152,7 +188,7 @@
     <script type="text/javascript" src="../js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="../js/app.js"></script>
-    <script type="text/javascript" src="../cordova.js"></script>
+    <!--<script type="text/javascript" src="../cordova.js"></script>-->
     <script type="text/javascript">
 
       function onLoad() {

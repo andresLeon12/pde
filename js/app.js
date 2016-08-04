@@ -10,9 +10,49 @@ var application = new Framework7({
 
 var urlServidor = "http://159.203.128.165:3000/";
 
+// Elección de la zona individual a editar
+var buttons = [
+    {
+        text: 'Selecciona la zona a editar',
+        label: true
+    },
+    {
+        text: 'Superior Izquierda',
+        onClick: function() {
+            localStorage.setItem("zona", 1);
+            window.location.href = "diagnostico.html";
+        }
+    },            
+    {
+        text: 'Superior Derecha',
+        onClick: function() {
+            localStorage.setItem("zona", 2);
+            window.location.href = "diagnostico.html";
+        }
+    }, 
+    {
+        text: 'Inferior Izquierda',
+        onClick: function() {
+            localStorage.setItem("zona", 3);
+            window.location.href = "diagnostico.html";
+        }
+    }, 
+    {
+        text: 'Inferior Derecha',
+        onClick: function() {
+            localStorage.setItem("zona", 4);
+            window.location.href = "diagnostico.html";
+        }
+    }, 
+];
+$(".zonas").click(function(){
+    application.actions(this, buttons);
+});
+
+
 app.controller('pacienteController', function($scope, $http){
 	$scope.paciente = JSON.parse(localStorage.getItem("paciente"));
-
+    $scope.pacientes = JSON.parse(localStorage.getItem("pacientes_guardados"));
     /* Cambie esta parte para que guarde la información en el telefono sin enviarla al servidor */
 	$scope.nuevoPaciente = function(){
 		$scope.pacienteN.RSEX = $("#genero").val();
@@ -92,12 +132,11 @@ app.controller('pacienteController', function($scope, $http){
     $scope.go = function(url){
     	window.location.href = url;
     }
-
     // Redirigir a alguna pagina
-    $scope.editar = function(zona){
+    /*$scope.editar = function(zona){
     	localStorage.setItem("zona", zona);
     	window.location.href = "diagnostico.html";
-    }
+    }*/
 
 	function get_today(){
         // Obtenemos la fecha de hoy con el formato dd/mm/yyyy
@@ -121,4 +160,18 @@ app.controller('pacienteController', function($scope, $http){
 		//Aqui ya puedes jalar los datos del json que se guardo para mostrarlos...y volver a editar....
 		// C R E O..
 	}
+
+    $scope.change = function(paciente){
+        var p = {
+            RCURP: paciente.RCURP,
+            RNOM: paciente.RNOM,
+            RAPP: paciente.RAPP,
+            RAPM: paciente.RAPM,
+            RFEN: paciente.RFEN,
+            RSEX: paciente.RSEX,
+            RFEC: paciente.RFEC
+        }
+        localStorage.setItem("paciente", JSON.stringify(p));
+        window.location.href = "vistas/info.html";
+    }
 });

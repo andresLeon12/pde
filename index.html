@@ -161,37 +161,36 @@
                     </div>
                   </div>
                   <div class="tab" id="search">
-                      
-                        <h1><i class="fa fa-user"></i> Pacientes</h1><br>
-                      <!-- Search Bar -->
-                      <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
-                        <div class="searchbar-input">
+                    <h1><i class="fa fa-user"></i> Pacientes</h1><br>
+                     <!-- Search Bar -->
+                    <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                      <div class="searchbar-input">
                           <input type="search" placeholder="Buscar Paciente..."><a href="#" class="searchbar-clear"></a>
-                        </div><a href="#" class="searchbar-cancel">Cancel</a>
-                      </form>
+                      </div><a href="#" class="searchbar-cancel">Cancelar</a>
+                    </form>
                      
-                      <!-- Search Bar overlay -->
-                      <div class="searchbar-overlay"></div>
+                    <!-- Search Bar overlay -->
+                    <div class="searchbar-overlay"></div>
                      
-                      <div class="page-content" style="margin-top:-90px;">
-                        <!-- This block will be displayed if nothing found -->
-                        <div class="content-block searchbar-not-found">
-                          <div class="content-block-inner">Paciente No Encontrado</div>
-                        </div>
-                     
-                        <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
-                        <div class="list-block list-block-search searchbar-found">
-                          <ul ng-repeat="p in pacientes">
-                            <a href="#" ng-click="mostrarPac(p._id)"><li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">
-                                  <i class="fa fa-user"></i> {{p.RNOM}} {{p.RAPP}} {{p.RAPM}}
-                                </div>
-                              </div>
-                            </li></a>
-                          </ul>
-                        </div>
+                    <div class="page-content" style="margin-top:-90px;">
+                      <!-- This block will be displayed if nothing found -->
+                      <div class="content-block searchbar-not-found">
+                        <div class="content-block-inner">Paciente No Encontrado</div>
                       </div>
+                     
+                      <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+                      <div class="list-block list-block-search searchbar-found">
+                        <ul ng-repeat="p in pacientes">
+                          <a href="#" ng-click="change(p)"><li class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title">
+                                <i class="fa fa-user"></i> {{p.RNOM}} {{p.RAPP}} {{p.RAPM}}
+                              </div>
+                            </div>
+                          </li></a>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -207,7 +206,7 @@
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
     <script type="text/javascript" charset="utf-8">
     /* Aca tambien le agregue unas cosas: en el onLoad le puse que oculte el boton de arriba */
     function onLoad() {
