@@ -60,7 +60,7 @@ app.controller('pacienteController', function($scope, $http){
     
     function hacerFoto(){
         //navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.DATA_URL });
+        navigator.camera.getPicture(tomarFoto, onFail, { quality: 50, destinationType: Camera.DestinationType.DATA_URL });
     }
 
     //Tomar Foto
