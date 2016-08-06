@@ -58,13 +58,13 @@ app.controller('pacienteController', function($scope, $http){
     //var URI = "";//va a ser global....es la uri de la foto que se toma con la camara...esta en base_64
     var URI = "img/dientes.jpg";//va a ser global....es la uri de la foto que se toma con la camara...esta en base_64
     
-    function hacerFoto(){
+    $scope.hacerFoto = function(){
         //navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
         navigator.camera.getPicture(tomarFoto, onFail, { quality: 50, destinationType: Camera.DestinationType.DATA_URL });
     }
 
     //Tomar Foto
-    $scope.tomarFoto = function(imageURI){//Manda como parametro la foto en base_64....
+    function tomarFoto(imageURI){//Manda como parametro la foto en base_64....
         /*var image = document.getElementById('perfil');
         image.src = URI;
         alert("imageUri "+imageURI)*/
