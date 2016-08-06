@@ -30,21 +30,25 @@ app.controller('mainController', function($scope, $http){
 		//idPaciente: datos._id,//Este es nuevo
 		//posicion: 1,//izquierdo superior
 		caries: 0,
-		ausentes: 0,
-		restos: 0,
-		protesis_fija: 0,
-		protesis_movil: 0,
 		obturacion: 0
 	}
 	var infoDientes = {
 		uno: {
 			//oclusal: jQuery.extend(true, {}, info),
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
 			lengual: jQuery.extend(true, {}, info),
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		dos: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			//oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -52,6 +56,10 @@ app.controller('mainController', function($scope, $http){
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		tres: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			//oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -59,6 +67,10 @@ app.controller('mainController', function($scope, $http){
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		cuatro: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -66,6 +78,10 @@ app.controller('mainController', function($scope, $http){
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		cinco: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -73,6 +89,10 @@ app.controller('mainController', function($scope, $http){
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		seis: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -80,6 +100,10 @@ app.controller('mainController', function($scope, $http){
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		siete: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -87,6 +111,10 @@ app.controller('mainController', function($scope, $http){
 			vestibular: jQuery.extend(true, {}, info)
 		},
 		ocho: {
+			ausente: 0,
+			restos: 0,
+			protesis_fija: 0,
+			protesis_movil : 0,
 			oclusal: jQuery.extend(true, {}, info),
 			mesial:  jQuery.extend(true, {}, info),
 			distal: jQuery.extend(true, {}, info),
@@ -128,6 +156,12 @@ app.controller('mainController', function($scope, $http){
 		structure_general.name = "diente-"+name;
 		var zon;
 		var color = "white";
+		var isZone = false;
+		if(infoDientes.posicion !== null){
+			if(infoDientes.posicion == zona){
+				isZone = true;
+			}
+		}
 		switch(name)
 		{
 			case "Diente 1": zon = infoDientes.uno;
@@ -140,11 +174,11 @@ app.controller('mainController', function($scope, $http){
 			break;
 			case "Premolar 2": zon = infoDientes.cinco;
 			break;
-			case "Premolar 3": zon = infoDientes.seis;
+			case "Molar 1": zon = infoDientes.seis;
 			break;
-			case "Molar 1": zon = infoDientes.siete;
+			case "Molar 2": zon = infoDientes.siete;
 			break;
-			case "Molar 2": zon = infoDientes.ocho;
+			case "Molar 3": zon = infoDientes.ocho;
 			break;
 		}
 		
@@ -154,16 +188,92 @@ app.controller('mainController', function($scope, $http){
 		text.y = 10 + originy;
 		structure_general.addChild(text);
 
+		if(zon.protesis_movil == 1) {
+			var circle = new createjs.Shape();
+			circle.graphics.beginStroke("#111");
+			circle.graphics.setStrokeStyle(1);
+			circle.snapToPixel = true;
+			circle.graphics.beginFill("green").drawCircle(0, 0, 60);
+			var label = new createjs.Text("Prótesis móvil", "bold 14px Arial", "#FFF");
+			label.textAlign = "center";
+			label.y = 0;
+			label.x = 00;
+
+			var dragger = new createjs.Container();
+			dragger.x = 100 + originx;
+			dragger.y = 100 + originy;
+			dragger.addChild(circle, label);
+			
+			structure_general.addChild(dragger);
+			return structure_general;
+		}
+
+		if(zon.protesis_fija == 1) {
+			var circle = new createjs.Shape();
+			circle.graphics.beginStroke("#111");
+			circle.graphics.setStrokeStyle(1);
+			circle.snapToPixel = true;
+			circle.graphics.beginFill("orange").drawCircle(0, 0, 60);
+			var label = new createjs.Text("Prótesis fija", "bold 14px Arial", "#FFF");
+			label.textAlign = "center";
+			label.y = 0;
+			label.x = 00;
+
+			var dragger = new createjs.Container();
+			dragger.x = 100 + originx;
+			dragger.y = 100 + originy;
+			dragger.addChild(circle, label);
+			
+			structure_general.addChild(dragger);
+			return structure_general;
+		}
+		if(zon.ausente == 1) {
+			var circle = new createjs.Shape();
+			circle.graphics.beginStroke("#111");
+			circle.graphics.setStrokeStyle(1);
+			circle.snapToPixel = true;
+			circle.graphics.beginFill("black").drawCircle(0, 0, 60);
+			var label = new createjs.Text("Ausente", "bold 14px Arial", "#FFF");
+			label.textAlign = "center";
+			label.y = 0;
+			label.x = 00;
+
+			var dragger = new createjs.Container();
+			dragger.x = 100 + originx;
+			dragger.y = 100 + originy;
+			dragger.addChild(circle, label);
+			
+			structure_general.addChild(dragger);
+			return structure_general;
+		}
+
+		if(zon.restos == 1) {
+			var circle = new createjs.Shape();
+			circle.graphics.beginStroke("#111");
+			circle.graphics.setStrokeStyle(1);
+			circle.snapToPixel = true;
+			circle.graphics.beginFill("brown").drawCircle(0, 0, 60);
+			var label = new createjs.Text("Restos", "bold 14px Arial", "#FFF");
+			label.textAlign = "center";
+			label.y = 0;
+			label.x = 00;
+
+			var dragger = new createjs.Container();
+			dragger.x = 100 + originx;
+			dragger.y = 100 + originy;
+			dragger.addChild(circle, label);
+			
+			structure_general.addChild(dragger);
+			return structure_general;
+		}
+
 		var rect = new createjs.Shape();
 		rect.graphics.beginStroke("#111");
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
-		if(infoDientes.posicion !== null){
-			if(infoDientes.posicion == zona){
-				color = (zon.mesial.caries == 1) ? "red" : color;
-				color = (zon.mesial.obturacion == 1) ? "blue" : color;
-			}
-		}
+		/*color = (zon.mesial.caries == 1) ? "red" : color;
+		color = (zon.mesial.obturacion == 1) ? "blue" : color;
+		color = (isZone) ? color : "white";*/
 		rect.graphics.beginFill(color).drawRect(0, 0, 60, 90);
 		rect.addEventListener("click", function(event) { 
 			var buttons = [
@@ -188,11 +298,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.mesial.caries = 1;infoDientes.cinco.mesial.obturacion = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.mesial.caries = 1;infoDientes.seis.mesial.obturacion = 0;
+							case "Molar 1": infoDientes.seis.mesial.caries = 1;infoDientes.seis.mesial.obturacion = 0;
 							break;
-							case "Molar 1": infoDientes.siete.mesial.caries = 1;infoDientes.siete.mesial.obturacion = 0;
+							case "Molar 2": infoDientes.siete.mesial.caries = 1;infoDientes.siete.mesial.obturacion = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.mesial.caries = 1;infoDientes.ocho.mesial.obturacion = 0;
+							case "Molar 3": infoDientes.ocho.mesial.caries = 1;infoDientes.ocho.mesial.obturacion = 0;
 							break;
 						}
 						var target = event.target;
@@ -219,11 +329,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.mesial.obturacion = 1;infoDientes.cinco.mesial.caries = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.mesial.obturacion = 1;infoDientes.seis.mesial.caries = 0;
+							case "Molar 1": infoDientes.seis.mesial.obturacion = 1;infoDientes.seis.mesial.caries = 0;
 							break;
-							case "Molar 1": infoDientes.siete.mesial.obturacion = 1;infoDientes.siete.mesial.caries = 0;
+							case "Molar 2": infoDientes.siete.mesial.obturacion = 1;infoDientes.siete.mesial.caries = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.mesial.obturacion = 1;infoDientes.ocho.mesial.caries = 0;
+							case "Molar 3": infoDientes.ocho.mesial.obturacion = 1;infoDientes.ocho.mesial.caries = 0;
 							break;
 						}
 						var target = event.target;
@@ -253,12 +363,9 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
 		color = "white";
-		if(infoDientes.posicion !== null){
-			if(infoDientes.posicion == zona){
-				color = (zon.distal.caries == 1) ? "red" : color;
-				color = (zon.distal.obturacion == 1) ? "blue" : color;
-			}
-		}
+		/*color = (zon.distal.caries == 1) ? "red" : color;
+		color = (zon.distal.obturacion == 1) ? "blue" : color;
+		color = (isZone) ? color : "white";*/
 		
 		rect.graphics.beginFill(color).drawRect(0, 0, 60, 90);
 		rect.addEventListener("click", function(event) { 
@@ -284,11 +391,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.distal.caries = 1;infoDientes.cinco.distal.obturacion = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.distal.caries = 1;infoDientes.seis.distal.obturacion = 0;
+							case "Molar 1": infoDientes.seis.distal.caries = 1;infoDientes.seis.distal.obturacion = 0;
 							break;
-							case "Molar 1": infoDientes.siete.distal.caries = 1;infoDientes.siete.distal.obturacion = 0;
+							case "Molar 2": infoDientes.siete.distal.caries = 1;infoDientes.siete.distal.obturacion = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.distal.caries = 1;infoDientes.ocho.distal.obturacion = 0;
+							case "Molar 3": infoDientes.ocho.distal.caries = 1;infoDientes.ocho.distal.obturacion = 0;
 							break;
 						}
 						var target = event.target;
@@ -315,11 +422,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.distal.obturacion = 1;infoDientes.cinco.distal.caries = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.distal.obturacion = 1;infoDientes.seis.distal.caries = 0;
+							case "Molar 1": infoDientes.seis.distal.obturacion = 1;infoDientes.seis.distal.caries = 0;
 							break;
-							case "Molar 1": infoDientes.siete.distal.obturacion = 1;infoDientes.siete.distal.caries = 0;
+							case "Molar 2": infoDientes.siete.distal.obturacion = 1;infoDientes.siete.distal.caries = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.distal.obturacion = 1;infoDientes.ocho.distal.caries = 0;
+							case "Molar 3": infoDientes.ocho.distal.obturacion = 1;infoDientes.ocho.distal.caries = 0;
 							break;
 						}
 						var target = event.target;
@@ -348,13 +455,11 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.beginStroke("#111");
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
-		color = "white";
-		if(infoDientes.posicion !== null){
-			if(infoDientes.posicion == zona){
-				color = (zon.lengual.caries == 1) ? "red" : color;
-				color = (zon.lengual.obturacion == 1) ? "blue" : color;
-			}
-		}
+		/*color = "white";
+		
+		color = (zon.lengual.caries == 1) ? "red" : color;
+		color = (zon.lengual.obturacion == 1) ? "blue" : color;
+		color = (isZone) ? color : "white";*/
 		
 		rect.graphics.beginFill(color).drawRect(0, 0, 90, 50);
 		rect.addEventListener("click", function(event) { 
@@ -380,11 +485,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.lengual.caries = 1;infoDientes.cinco.lengual.obturacion = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.lengual.caries = 1;infoDientes.seis.lengual.obturacion = 0;
+							case "Molar 1": infoDientes.seis.lengual.caries = 1;infoDientes.seis.lengual.obturacion = 0;
 							break;
-							case "Molar 1": infoDientes.siete.lengual.caries = 1;infoDientes.siete.lengual.obturacion = 0;
+							case "Molar 2": infoDientes.siete.lengual.caries = 1;infoDientes.siete.lengual.obturacion = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.lengual.caries = 1;infoDientes.ocho.lengual.obturacion = 0;
+							case "Molar 3": infoDientes.ocho.lengual.caries = 1;infoDientes.ocho.lengual.obturacion = 0;
 							break;
 						}
 						var target = event.target;
@@ -411,11 +516,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.lengual.obturacion = 1;infoDientes.cinco.lengual.caries = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.lengual.obturacion = 1;infoDientes.seis.lengual.caries = 0;
+							case "Molar 1": infoDientes.seis.lengual.obturacion = 1;infoDientes.seis.lengual.caries = 0;
 							break;
-							case "Molar 1": infoDientes.siete.lengual.obturacion = 1;infoDientes.siete.lengual.caries = 0;
+							case "Molar 2": infoDientes.siete.lengual.obturacion = 1;infoDientes.siete.lengual.caries = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.lengual.obturacion = 1;infoDientes.ocho.lengual.caries = 0;
+							case "Molar 3": infoDientes.ocho.lengual.obturacion = 1;infoDientes.ocho.lengual.caries = 0;
 							break;
 						}
 						var target = event.target;
@@ -444,13 +549,10 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.beginStroke("#111");
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
-		color = "white";
-		if(infoDientes.posicion !== null){
-			if(infoDientes.posicion == zona){
-				color = (zon.vestibular.caries == 1) ? "red" : color;
-				color = (zon.vestibular.obturacion == 1) ? "blue" : color;
-			}
-		}
+		/*color = "white";
+		color = (zon.vestibular.caries == 1) ? "red" : color;
+		color = (zon.vestibular.obturacion == 1) ? "blue" : color;
+		color = (isZone) ? color : "white";*/
 		
 		rect.graphics.beginFill(color).drawRect(0, 0, 90, 50);
 		rect.addEventListener("click", function(event) { 
@@ -476,11 +578,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.vestibular.caries = 1;infoDientes.cinco.vestibular.obturacion = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.vestibular.caries = 1;infoDientes.seis.vestibular.obturacion = 0;
+							case "Molar 1": infoDientes.seis.vestibular.caries = 1;infoDientes.seis.vestibular.obturacion = 0;
 							break;
-							case "Molar 1": infoDientes.siete.vestibular.caries = 1;infoDientes.siete.vestibular.obturacion = 0;
+							case "Molar 2": infoDientes.siete.vestibular.caries = 1;infoDientes.siete.vestibular.obturacion = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.vestibular.caries = 1;infoDientes.ocho.vestibular.obturacion = 0;
+							case "Molar 3": infoDientes.ocho.vestibular.caries = 1;infoDientes.ocho.vestibular.obturacion = 0;
 							break;
 						}
 						var target = event.target;
@@ -507,11 +609,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.vestibular.obturacion = 1;infoDientes.cinco.vestibular.caries = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.vestibular.obturacion = 1;infoDientes.seis.vestibular.caries = 0;
+							case "Molar 1": infoDientes.seis.vestibular.obturacion = 1;infoDientes.seis.vestibular.caries = 0;
 							break;
-							case "Molar 1": infoDientes.siete.vestibular.obturacion = 1;infoDientes.siete.vestibular.caries = 0;
+							case "Molar 2": infoDientes.siete.vestibular.obturacion = 1;infoDientes.siete.vestibular.caries = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.vestibular.obturacion = 1;infoDientes.ocho.vestibular.caries = 0;
+							case "Molar 3": infoDientes.ocho.vestibular.obturacion = 1;infoDientes.ocho.vestibular.caries = 0;
 							break;
 						}
 						var target = event.target;
@@ -540,15 +642,12 @@ app.controller('mainController', function($scope, $http){
 		circle.graphics.beginStroke("#111");
 		circle.graphics.setStrokeStyle(1);
 		circle.snapToPixel = true;
-		color = "white";
+		/*color = "white";
 		if(zon.oclusal != null){
-			if(infoDientes.posicion !== null){
-				if(infoDientes.posicion == zona){
-					color = (zon.oclusal.caries == 1) ? "red" : color;
-					color = (zon.oclusal.obturacion == 1) ? "blue" : color;
-				}
-			}
-		}	
+			color = (zon.oclusal.caries == 1) ? "red" : color;
+			color = (zon.oclusal.obturacion == 1) ? "blue" : color;
+			color = (isZone) ? color : "white";
+		}	*/
 		circle.graphics.beginFill(color).drawCircle(0, 0, 33);
 		circle.addEventListener("click", function(event) { 
 			var buttons = [
@@ -573,11 +672,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.oclusal.caries = 1;infoDientes.cinco.oclusal.obturacion = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.oclusal.caries = 1;infoDientes.seis.oclusal.obturacion = 0;
+							case "Molar 1": infoDientes.seis.oclusal.caries = 1;infoDientes.seis.oclusal.obturacion = 0;
 							break;
-							case "Molar 1": infoDientes.siete.oclusal.caries = 1;infoDientes.siete.oclusal.obturacion = 0;
+							case "Molar 2": infoDientes.siete.oclusal.caries = 1;infoDientes.siete.oclusal.obturacion = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.oclusal.caries = 1;infoDientes.ocho.oclusal.obturacion = 0;
+							case "Molar 3": infoDientes.ocho.oclusal.caries = 1;infoDientes.ocho.oclusal.obturacion = 0;
 							break;
 						}
 						var target = event.target;
@@ -604,11 +703,11 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Premolar 2": infoDientes.cinco.oclusal.obturacion = 1;infoDientes.cinco.oclusal.caries = 0;
 							break;
-							case "Premolar 3": infoDientes.seis.oclusal.obturacion = 1;infoDientes.seis.oclusal.caries = 0;
+							case "Molar 1": infoDientes.seis.oclusal.obturacion = 1;infoDientes.seis.oclusal.caries = 0;
 							break;
-							case "Molar 1": infoDientes.siete.oclusal.obturacion = 1;infoDientes.siete.oclusal.caries = 0;
+							case "Molar 2": infoDientes.siete.oclusal.obturacion = 1;infoDientes.siete.oclusal.caries = 0;
 							break;
-							case "Molar 2": infoDientes.ocho.oclusal.obturacion = 1;infoDientes.ocho.oclusal.caries = 0;
+							case "Molar 3": infoDientes.ocho.oclusal.obturacion = 1;infoDientes.ocho.oclusal.caries = 0;
 							break;
 						}
 						var target = event.target;
@@ -651,11 +750,11 @@ app.controller('mainController', function($scope, $http){
 		muelas.addChild(structure_general);
 		var structure_general = createDental("Premolar 2", 720, 0, true);
 		muelas.addChild(structure_general);
-		var structure_general = createDental("Premolar 3", 900, 0, true);
+		var structure_general = createDental("Molar 1", 900, 0, true);
 		muelas.addChild(structure_general);
-		var structure_general = createDental("Molar 1", 1080, 0, true);
+		var structure_general = createDental("Molar 2", 1080, 0, true);
 		muelas.addChild(structure_general);
-		var structure_general = createDental("Molar 2", 1260, 0, true);
+		var structure_general = createDental("Molar 3", 1260, 0, true);
 		muelas.addChild(structure_general);
 		//var structure_general = createBorder(180);
 		//muelas.addChild(structure_general);
@@ -666,7 +765,7 @@ app.controller('mainController', function($scope, $http){
 	}
 
 	function get(callback) {
-		$http.get(urlServidor+"info/getInformacion/"+$scope.paciente._id+"/"+zona).success(function(response){
+		/*$http.get(urlServidor+"info/getInformacion/"+$scope.paciente._id+"/"+zona).success(function(response){
 			if(response.status){
 				if(response.data != null)
 					infoDientes = response.data;
@@ -675,7 +774,7 @@ app.controller('mainController', function($scope, $http){
 					for(i in sesiones_guardadas) {
 						if(sesiones_guardadas[i].idPaciente == datos.RCURP && sesiones_guardadas[i].posicion == localStorage.getItem("zona")){
 							infoDientes = sesiones_guardadas[i];
-							//alert(JSON.stringify(infoDientes));
+							break;
 						}
 					}
 				}
@@ -686,10 +785,19 @@ app.controller('mainController', function($scope, $http){
 			for(i in sesiones_guardadas) {
 				if(sesiones_guardadas[i].idPaciente == datos.RCURP && sesiones_guardadas[i].posicion == localStorage.getItem("zona")){
 					infoDientes = sesiones_guardadas[i];
+					break;
 				}
 			}
 			callback();
-		})
+		})*/
+		var sesiones_guardadas = JSON.parse(localStorage.getItem("sesiones_guardadas"));
+			for(i in sesiones_guardadas) {
+				if(sesiones_guardadas[i].idPaciente == datos.RCURP && sesiones_guardadas[i].posicion == localStorage.getItem("zona")){
+					infoDientes = sesiones_guardadas[i];
+					break;
+				}
+			}
+			callback();
 	}
 
 	function load() {
@@ -821,37 +929,15 @@ app.controller('mainController', function($scope, $http){
 		var pos = sesiones_guardadas.length;
 		for(i in sesiones_guardadas) {
 			if(sesiones_guardadas[i].idPaciente == datos.RCURP && sesiones_guardadas[i].posicion == localStorage.getItem("zona")){
-				//infoDientes = sesiones_guardadas[i];
 				pos = i;
+				break;
 			}
 		}
 
-		//localStorage.removeItem("sesiones_guardadas")
 		sesiones_guardadas[pos] = infoDientes;
 			
 		localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
-		/*var isOnline = 0;//$("#isOnline").val();
-		alert(isOnline);
-		if(isOnline == 1)
-		{
-			$http.post(urlServidor+"info/nuevaInformacion", infoDientes).success(function(respuesta) {
-				if(respuesta.status){
-					isSave = true;
-					$("#msj").html($scope.zona_revision+" - Información guardada. <i class='fa fa-check-circle'>");
-				}
-			})
-		}else {
-			var sesiones_guardadas = []
-			if (localStorage.getItem("sesiones_guardadas") == null) 
-				localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
 
-			sesiones_guardadas = JSON.parse(localStorage.getItem("sesiones_guardadas"));
-
-			//localStorage.removeItem("sesiones_guardadas")
-			sesiones_guardadas[sesiones_guardadas.length] = infoDientes;
-			
-			localStorage.setItem("sesiones_guardadas", JSON.stringify(sesiones_guardadas));
-		}*/
 		application.addNotification({
         		message: 'Información guardada',
 		        button: {

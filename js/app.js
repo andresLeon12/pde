@@ -53,6 +53,31 @@ $(".zonas").click(function(){
 app.controller('pacienteController', function($scope, $http){
 	$scope.paciente = JSON.parse(localStorage.getItem("paciente"));
     $scope.pacientes = JSON.parse(localStorage.getItem("pacientes_guardados"));
+
+    // ------------------ Tomando la foto ----------------------------------------------
+    //var URI = "";//va a ser global....es la uri de la foto que se toma con la camara...esta en base_64
+    var URI = "img/dientes.jpg";//va a ser global....es la uri de la foto que se toma con la camara...esta en base_64
+    
+    function hacerFoto(){
+        //navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.DATA_URL });
+    }
+
+    //Tomar Foto
+    $scope.tomarFoto = function(imageURI){//Manda como parametro la foto en base_64....
+        /*var image = document.getElementById('perfil');
+        image.src = URI;
+        alert("imageUri "+imageURI)*/
+        var image = document.getElementById('perfil');
+        URI = "data:image/png;base64," + imageURI;
+        image.src = URI;
+    }
+
+    function onFail(message) {
+        alert('Falló a causa de: ' + message);
+    }
+    //--------------------- Tomando la foto  ------------------------------------------------
+
     /* Cambie esta parte para que guarde la información en el telefono sin enviarla al servidor */
 	$scope.nuevoPaciente = function(){
 		$scope.pacienteN.RSEX = $("#genero").val();
@@ -70,6 +95,15 @@ app.controller('pacienteController', function($scope, $http){
 		$scope.pacienteN.RCURP = curp.toUpperCase();
 		
 		$scope.pacienteN.RFEC = get_today();
+
+        //------------------ Foto ----------------------------------
+        //agregando la uri al objeto paciente .... TEMPORAL
+        $scope.pacienteN.RLOGTEMP = URI;
+        //Foto del perfil del paciente en nulo
+        //$scope.pacienteN.RLOG = $scope.pacienteN.RCURP+"/perfil.png";
+        $scope.pacienteN.RLOG = "perfil.png";
+        //--------------- Foto -----------------------------------
+
         var pacientes_guardados = []
         if (localStorage.getItem("pacientes_guardados") == null) 
             localStorage.setItem("pacientes_guardados", JSON.stringify(pacientes_guardados));
@@ -98,6 +132,17 @@ app.controller('pacienteController', function($scope, $http){
       // Guardar usuarios registrados
       if(localStorage.getItem("pacientes_guardados") != null){
         var pacientes_guardados = JSON.parse(localStorage.getItem("pacientes_guardados"));
+
+        //primero guardamos las fotos del perfil de los paciente************************************
+        for(i in pacientes_guardados) {
+            $http.post(urlServidor+"guardarPerfil", pacientes_guardados[i]).success(function(respuesta) {
+            //$http.post(urlServidor+"paciente/nuevoPaciente", pacientes_guardados[i]).success(function(respuesta) {
+                if(respuesta.status){
+                    console.log("se guardo la imagen");
+                }
+            });
+        }
+        //Fin guardar fotos del perfil del paciente **********************************************
 
         for(i in pacientes_guardados) {
           $http.post(urlServidor+"paciente/nuevoPaciente", pacientes_guardados[i]).success(function(respuesta) {
