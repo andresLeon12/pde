@@ -1,5 +1,5 @@
 var app = angular.module('MainApp', []);
-var urlServidor = 'http://192.168.1.103:3000/';
+var urlServidor = 'http://159.203.128.165:3000/';
 var application = new Framework7({
 	material: true,
 	materialRipple: true

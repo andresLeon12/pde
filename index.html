@@ -77,10 +77,15 @@
                             <!--  FOTO DE PERFIL-->
                               <li>
                                   <div class="col-25"></div>
-                                  <img id="perfil" ng-click="hacerFoto()" src="" width="100px" height="100px">
+                                  <img id="perfil" ng-click="hacerFoto(1)" src="" width="100px" height="100px">
                                   <!--<div class="col-30">
                                     <button type="button" ng-click="tomarFoto()" class="button button-fill button-raised color-blue">Foto</button>
                                   </div>-->
+                              </li>
+                              <li>
+                                <div class="col-100">
+                                  <a class="button button-fill button-raised color-blue" href="vistas/panoramicas.html">Tomar panorámica</a>
+                                </div>
                               </li>
                               <!-- Fin para la foto del perfil -->
                               <!-- Text inputs -->
@@ -215,7 +220,7 @@
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
-    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
     /* Aca tambien le agregue unas cosas: en el onLoad le puse que oculte el boton de arriba */
     function onLoad() {
