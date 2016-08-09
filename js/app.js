@@ -4,7 +4,6 @@ var application = new Framework7({
 	material: true
 });
 
-
 //var socket = io.connect('http://192.168.43.135:3000');
 // Controlador de login
 
@@ -49,7 +48,6 @@ $(".zonas").click(function(){
     application.actions(this, buttons);
 });
 
-
 app.controller('pacienteController', function($scope, $http){
 	$scope.paciente = JSON.parse(localStorage.getItem("paciente"));
     $scope.pacientes = JSON.parse(localStorage.getItem("pacientes_guardados"));
@@ -80,8 +78,8 @@ app.controller('pacienteController', function($scope, $http){
 
     /* Cambie esta parte para que guarde la información en el telefono sin enviarla al servidor */
 	$scope.nuevoPaciente = function(){
-		$scope.pacienteN.RSEX = $("#genero").val();
-		if($scope.pacienteN.RCURP.length > 18 || $scope.pacienteN.RCURP.length < 18){
+		//$scope.pacienteN.RSEX = $("#genero").val();
+		/*if($scope.pacienteN.RCURP.length > 18 || $scope.pacienteN.RCURP.length < 18){
 			application.addNotification({
         		message: 'Es necesario ingresar los 18 caracteres del CURP',
 		        button: {
@@ -90,7 +88,28 @@ app.controller('pacienteController', function($scope, $http){
 		        }
     		});
 			return;
-		}
+		}*/
+        var regex = "[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}" +
+        "(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])" +
+        "[HM]{1}" +
+        "(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)" +
+        "[B-DF-HJ-NP-TV-Z]{3}" +
+        "[0-9A-Z]{1}[0-9]{1}$";
+        var validCURP = $scope.pacienteN.RCURP.match(regex);
+        if(validCURP == null){
+            application.addNotification({
+                message: 'Ingrese una CURP válida',
+                button: {
+                    text: 'Cerrar',
+                    color: 'lightgreen'
+                }
+            });
+            return;
+        }
+        
+        $scope.pacienteN.RSEX = validCURP[0][10];
+        var fecha = ''+validCURP[0][8]+validCURP[0][9]+"/"+validCURP[0][6]+validCURP[0][7]+"/19"+validCURP[0][4]+validCURP[0][5];
+        $scope.pacienteN.RFEN = fecha;
 		var curp = $scope.pacienteN.RCURP;
 		$scope.pacienteN.RCURP = curp.toUpperCase();
 		
