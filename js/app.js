@@ -90,6 +90,13 @@ app.controller('pacienteController', function($scope, $http){
         $scope.paciente.RPA2TEMP = URI_PAN2;
         $scope.paciente.RPA1 = "panoramica1.png";
         $scope.paciente.RPA2 = "panoramica2.png";
+        application.addNotification({
+                message: 'Información guardada',
+                button: {
+                    text: 'Cerrar',
+                    color: 'lightgreen'
+                }
+            });
     }
     //--------------------- Tomando la foto y guardando fotos local ------------------------------------------------
     /* Cambie esta parte para que guarde la información en el telefono sin enviarla al servidor */
