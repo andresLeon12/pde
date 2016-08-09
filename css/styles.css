@@ -122,9 +122,9 @@ body {
     background-position: center;
 }
 
-/*.tab {
+.tab {
   overflow: auto;
-}*/
+}
 
 .facebook-card .card-header {
     display: block;
