@@ -30,7 +30,8 @@
             <div class="navbar">
               <div class="navbar-inner">
                 <div class="left">
-                <a href="#" ng-click="go('../index.html');" class="link">
+                <!--a href="#" ng-click="go('../index.html');" class="link"-->
+                <a href="#" ng-click="go('info.html');" class="link">
                     <i class="fa fa-chevron-left"></i>
                     <span>Atras</span>
                 </a>
@@ -51,31 +52,32 @@
                     </div>
                     <div class="line"></div>
                     <div class="row">
-                              <div class="col-80"><div class="list-block"><ul>
                       <!-- Text inputs -->
-                      <li>
+                      <div class="col-50">
                         <div class="item-content">
                             <!--div class="item-media"><i class="fa fa-book"></i></div-->
                             <div class="item-inner">
                               <div class="item-input">
                                   <!--input type='file' file-model="rayosN.rayos1" required onchange="readURL(this,1);" /-->
-                                  <img id="panoramicaI" ng-click="hacerFoto(2)" src="#" alt="Panoramica 1" width="250px" height="300px" />
+                                  <!--img id="panoramicaI" ng-click="hacerFoto(2)" src="#" alt="Panoramica 1" width="250px" height="300px" /-->
+                                  <img id="panoramicaI" ng-click="panoramica_1()" src="#" alt="Tomar Panoramica 1" width="250px" height="300px" />
                               </div>
                             </div>
                         </div>
-                      </li>
-                      <li>
+                      </div>
+                      <div class="col-50">
                         <div class="item-content">
                             <!--div class="item-media"><i class="fa fa-book"></i></div-->
                             <div class="item-inner">
                               <div class="item-input">
                                   <!--input type='file' file-model="rayosN.rayos2" required onchange="readURL(this,2);" /-->
-                                  <img id="panoramicaII" ng-click="hacerFoto(3)" src="#" alt="Panoramica 2" width="250px" height="300px" />
+                                  <!--img id="panoramicaII" ng-click="hacerFoto(3)" src="#" alt="Panoramica 2" width="250px" height="300px" /-->
+                                  <img id="panoramicaII" ng-click="panoramica_2()" src="#" alt="Tomar Panoramica 2" width="250px" height="300px" />
                               </div>
                             </div>
                         </div>
-                      </li>
-                      <a class="button button-fill button-raised color-blue" ng-click="savePanoramicas()">Guardar las fotos</a>
+                      </div>
+                      <a class="col-100 button button-fill button-raised color-blue" ng-click="savePanoramicas()">Guardar las fotos</a>
                       <!-- Text inputs -->
                       <!--li>
                         <div class="item-content">
@@ -86,7 +88,7 @@
                               </div>
                             </div>
                         </div>
-                      </li--></ul></div></div>
+                      </li--></div>
                     </div>
                 </div>
               </div>
