@@ -123,7 +123,7 @@
        
           localStorage.removeItem("sesiones_guardadas");
       }
-
+      var app = angular.module('MainApp', []);
       app.controller('pacienteController', function($scope, $http){
         $scope.paciente = JSON.parse(localStorage.getItem("paciente"));
         if($scope.paciente.RPA1TEMP){
