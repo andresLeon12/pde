@@ -123,14 +123,6 @@
         //alert("offline")
         document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
       }
-      var app = angular.module('MainApp', []);
-      app.controller('pacienteController', function($scope, $http){
-        $scope.paciente = JSON.parse(localStorage.getItem("paciente"));
-        if($scope.paciente.RLOGTEMP){
-          var image = document.getElementById('foto_perfil');
-          image.src = $scope.paciente.RLOGTEMP;
-        }
-      });
     </script>
   </body>
 </html> 

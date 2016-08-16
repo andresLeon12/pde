@@ -119,18 +119,6 @@
         //alert("offline")
         document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
       }
-      var app = angular.module('MainApp', []);
-      app.controller('pacienteController', function($scope, $http){
-        $scope.paciente = JSON.parse(localStorage.getItem("paciente"));
-        if($scope.paciente.RPA1TEMP){
-          var image1 = document.getElementById('panoramicaI');
-          image.src = $scope.paciente.RPA1TEMP;
-        }
-        if($scope.paciente.RPA2TEMP){
-          var image1 = document.getElementById('panoramicaII');
-          image.src = $scope.paciente.RPA2TEMP;
-        }
-      });
     </script>
     </script>
   </body>
