@@ -77,7 +77,7 @@
                             <!--  FOTO DE PERFIL-->
                               <li>
                                   <div class="col-25"></div>
-                                  <img style="cursor: pointer;" alt="Tomar foto" id="perfil" ng-click="hacerFoto(1)" src="" width="100px" height="100px">
+                                  <img style="cursor: pointer;" alt="Tomar foto" id="perfil" ng-click="hacerFoto()" src="" width="100px" height="100px">
                                   <!--<div class="col-30">
                                     <button type="button" ng-click="tomarFoto()" class="button button-fill button-raised color-blue">Foto</button>
                                   </div>-->
@@ -243,6 +243,7 @@
     //
     function onOffline() {
       //alert("offline")
+      $("#save").css("display", "none");
       document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
     }
     function onOnline() {
