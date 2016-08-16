@@ -126,8 +126,14 @@
       function onOnline() {
        
           localStorage.removeItem("sesiones_guardadas");
-        }
       }
+      app.controller('pacienteController', function($scope, $http){
+        $scope.paciente = JSON.parse(localStorage.getItem("paciente"));
+        if($scope.paciente.RLOGTEMP){
+          var image = document.getElementById('foto_perfil');
+          image.src = $scope.paciente.RLOGTEMP;
+        }
+      });
     </script>
   </body>
 </html> 
