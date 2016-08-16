@@ -123,10 +123,6 @@
         //alert("offline")
         document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
       }
-      function onOnline() {
-       
-          localStorage.removeItem("sesiones_guardadas");
-      }
       var app = angular.module('MainApp', []);
       app.controller('pacienteController', function($scope, $http){
         $scope.paciente = JSON.parse(localStorage.getItem("paciente"));
