@@ -271,9 +271,9 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.beginStroke("#111");
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
-		/*color = (zon.mesial.caries == 1) ? "red" : color;
+		color = (zon.mesial.caries == 1) ? "red" : color;
 		color = (zon.mesial.obturacion == 1) ? "blue" : color;
-		color = (isZone) ? color : "white";*/
+		color = (isZone) ? color : "white";
 		rect.graphics.beginFill(color).drawRect(0, 0, 60, 90);
 		rect.addEventListener("click", function(event) { 
 			var buttons = [
@@ -363,9 +363,9 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
 		color = "white";
-		/*color = (zon.distal.caries == 1) ? "red" : color;
+		color = (zon.distal.caries == 1) ? "red" : color;
 		color = (zon.distal.obturacion == 1) ? "blue" : color;
-		color = (isZone) ? color : "white";*/
+		color = (isZone) ? color : "white";
 		
 		rect.graphics.beginFill(color).drawRect(0, 0, 60, 90);
 		rect.addEventListener("click", function(event) { 
@@ -455,11 +455,11 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.beginStroke("#111");
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
-		/*color = "white";
+		color = "white";
 		
 		color = (zon.lengual.caries == 1) ? "red" : color;
 		color = (zon.lengual.obturacion == 1) ? "blue" : color;
-		color = (isZone) ? color : "white";*/
+		color = (isZone) ? color : "white";
 		
 		rect.graphics.beginFill(color).drawRect(0, 0, 90, 50);
 		rect.addEventListener("click", function(event) { 
@@ -549,10 +549,10 @@ app.controller('mainController', function($scope, $http){
 		rect.graphics.beginStroke("#111");
 		rect.graphics.setStrokeStyle(1);
 		rect.snapToPixel = true;
-		/*color = "white";
+		color = "white";
 		color = (zon.vestibular.caries == 1) ? "red" : color;
 		color = (zon.vestibular.obturacion == 1) ? "blue" : color;
-		color = (isZone) ? color : "white";*/
+		color = (isZone) ? color : "white";
 		
 		rect.graphics.beginFill(color).drawRect(0, 0, 90, 50);
 		rect.addEventListener("click", function(event) { 
@@ -642,12 +642,12 @@ app.controller('mainController', function($scope, $http){
 		circle.graphics.beginStroke("#111");
 		circle.graphics.setStrokeStyle(1);
 		circle.snapToPixel = true;
-		/*color = "white";
+		color = "white";
 		if(zon.oclusal != null){
 			color = (zon.oclusal.caries == 1) ? "red" : color;
 			color = (zon.oclusal.obturacion == 1) ? "blue" : color;
 			color = (isZone) ? color : "white";
-		}	*/
+		}	
 		circle.graphics.beginFill(color).drawCircle(0, 0, 33);
 		circle.addEventListener("click", function(event) { 
 			var buttons = [
