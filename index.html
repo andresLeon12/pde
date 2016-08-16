@@ -55,6 +55,8 @@
                     <div class="row">
                       <div class="col-100 tablet-100">
                         <h1>BIENVENIDO A DENTAPP</h1>
+                        <!-- Agregue este boton que se habilita cuando tienes información alamcenada en el telefono -->
+                        <a id="save" href="#" ng-click="Save()" class="center button button-big button-fill button-raised color-teal" style="display: none;">Subir</a>
                         <div id="online"></div>
                       </div>
                     </div>
@@ -218,15 +220,10 @@
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
-    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
     /* Aca tambien le agregue unas cosas: en el onLoad le puse que oculte el boton de arriba */
     function onLoad() {
-      if(localStorage.getItem("sesiones_guardadas") != null){
-        $("#save").css("display", "block");
-      }else{
-        $("#save").css("display", "none");
-      }
       document.addEventListener("deviceready", onDeviceReady, false);
     }
 
@@ -249,7 +246,11 @@
       document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
     }
     function onOnline() {
-      //alert("online")
+      if(localStorage.getItem("sesiones_guardadas") != null){
+        $("#save").css("display", "block");
+      }else{
+        $("#save").css("display", "none");
+      }
       document.getElementById("online").innerHTML = "";
     }
 
