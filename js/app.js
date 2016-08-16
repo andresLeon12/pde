@@ -54,7 +54,15 @@ app.controller('pacienteController', function($scope, $http){
     var URI = "img/dientes.jpg";//va a ser global....es la uri de la foto que se toma con la camara...esta en base_64
     var URI_PAN1 = "img/dientes.jpg";
     var URI_PAN2 = "img/dientes.jpg";
-    
+
+    /* Ponemos la foto de perfil */
+    var image = document.getElementById('foto_perfil');
+    image.src = $scope.paciente.RLOGTEMP;
+    var image1 = document.getElementById('panoramicaI');
+    image.src = $scope.paciente.RPA1TEMP;
+    var image2 = document.getElementById('panoramicaII');
+    image.src = $scope.paciente.RPA2TEMP;
+
     $scope.hacerFoto = function(){
     //$scope.hacerFoto = function(action){
         /*if(action == 1){//Perfil
