@@ -100,7 +100,7 @@ app.controller('pacienteController', function($scope, $http){
         panoramica.src = URI_PAN2;
     }
     function onFail(message) {
-        alert('Falló a causa de: ' + message);
+        //alert('Falló a causa de: ' + message);
     }
     //Guardando Temporalmente las fotos panoramicas, tanto los nombres como los objetos....
     $scope.savePanoramicas = function(){
@@ -120,6 +120,7 @@ app.controller('pacienteController', function($scope, $http){
                     pacientes_guardados[i].RPA1 = "panoramica1.png";
                     pacientes_guardados[i].RPA2 = "panoramica2.png";
                     localStorage.setItem("paciente", JSON.stringify(pacientes_guardados[i]));
+                    break;
                 }
             }
             localStorage.setItem("pacientes_guardados", JSON.stringify(pacientes_guardados));
@@ -236,14 +237,13 @@ app.controller('pacienteController', function($scope, $http){
       if(localStorage.getItem("pacientes_guardados") != null){
         var pacientes_guardados = JSON.parse(localStorage.getItem("pacientes_guardados"));
         //primero guardamos las fotos del perfil de los paciente************************************
-        for(i in pacientes_guardados) {
+        /*for(i in pacientes_guardados) {
             $http.post(urlServidor+"guardarPerfil", pacientes_guardados[i]).success(function(respuesta) {
             //$http.post(urlServidor+"paciente/nuevoPaciente", pacientes_guardados[i]).success(function(respuesta) {
                 if(respuesta.status){
-                    console.log("se guardo la imagen");
                 }
             });
-        }
+        }*/
         //Fin guardar fotos del perfil del paciente **********************************************
         for(i in pacientes_guardados) {
           $http.post(urlServidor+"paciente/nuevoPaciente", pacientes_guardados[i]).success(function(respuesta) {
