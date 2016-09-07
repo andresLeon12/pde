@@ -153,9 +153,9 @@ app.controller('mainController', function($scope, $http){
 		var zon;
 		switch(name)
 		{
-			case "Diente 1": zon = datos.uno;
+			case "Incisivo central": zon = datos.uno;
 			break;
-			case "Diente 2": zon = datos.dos;
+			case "Incisivo lateral": zon = datos.dos;
 			break;
 			case "Canino": zon = datos.tres;
 			break;
@@ -199,9 +199,9 @@ app.controller('mainController', function($scope, $http){
 					onClick: function () {
 						switch(name)
 						{
-							case "Diente 1": datos.uno.ausente = 1;datos.uno.protesis_fija = 1;datos.uno.protesis_movil = 0;
+							case "Incisivo central": datos.uno.ausente = 1;datos.uno.protesis_fija = 1;datos.uno.protesis_movil = 0;
 							break;
-							case "Diente 2": datos.dos.ausente = 1;datos.dos.protesis_fija = 1;datos.dos.protesis_movil = 0;
+							case "Incisivo lateral": datos.dos.ausente = 1;datos.dos.protesis_fija = 1;datos.dos.protesis_movil = 0;
 							break;
 							case "Canino": datos.tres.ausente = 1;datos.tres.protesis_fija = 1;datos.tres.protesis_movil = 0;
 							break;
@@ -230,9 +230,9 @@ app.controller('mainController', function($scope, $http){
 					onClick: function () {
 						switch(name)
 						{
-							case "Diente 1": datos.uno.ausente = 1;datos.uno.protesis_movil = 1;datos.uno.protesis_fija = 0;
+							case "Incisivo central": datos.uno.ausente = 1;datos.uno.protesis_movil = 1;datos.uno.protesis_fija = 0;
 							break;
-							case "Diente 2": datos.dos.ausente = 1;datos.dos.protesis_movil = 1;datos.dos.protesis_fija = 0;
+							case "Incisivo lateral": datos.dos.ausente = 1;datos.dos.protesis_movil = 1;datos.dos.protesis_fija = 0;
 							break;
 							case "Canino": datos.tres.ausente = 1;datos.tres.protesis_movil = 1;datos.tres.protesis_fija = 0;
 							break;
@@ -261,9 +261,9 @@ app.controller('mainController', function($scope, $http){
 					onClick: function () {
 						switch(name)
 						{
-							case "Diente 1": datos.uno.ausente = 1;datos.uno.restos = 0;
+							case "Incisivo central": datos.uno.ausente = 1;datos.uno.restos = 0;
 							break;
-							case "Diente 2": datos.dos.ausente = 1;datos.dos.restos = 0;
+							case "Incisivo lateral": datos.dos.ausente = 1;datos.dos.restos = 0;
 							break;
 							case "Canino": datos.tres.ausente = 1;datos.tres.restos = 0;
 							break;
@@ -292,9 +292,9 @@ app.controller('mainController', function($scope, $http){
 					onClick: function () {
 						switch(name)
 						{
-							case "Diente 1": datos.uno.restos = 1;datos.uno.ausente = 0;
+							case "Incisivo central": datos.uno.restos = 1;datos.uno.ausente = 0;
 							break;
-							case "Diente 2": datos.dos.restos = 1;datos.dos.ausente = 0;
+							case "Incisivo lateral": datos.dos.restos = 1;datos.dos.ausente = 0;
 							break;
 							case "Canino": datos.tres.restos = 1;datos.tres.ausente = 0;
 							break;
@@ -333,9 +333,9 @@ app.controller('mainController', function($scope, $http){
 
 		SI = new createjs.Stage("SI");
 		createjs.Touch.enable(SI)
-		var structure_general = createDental("Diente 1", 0, 0, SI, infoDientesSI);
+		var structure_general = createDental("Incisivo central", 0, 0, SI, infoDientesSI);
 		SI.addChild(structure_general);
-		var structure_general = createDental("Diente 2", 80, 0, SI, infoDientesSI);
+		var structure_general = createDental("Incisivo lateral", 80, 0, SI, infoDientesSI);
 		SI.addChild(structure_general);
 		var structure_general = createDental("Canino", 160, 0, SI, infoDientesSI);
 		SI.addChild(structure_general);
@@ -354,9 +354,9 @@ app.controller('mainController', function($scope, $http){
 
 		SD = new createjs.Stage("SD");
 		createjs.Touch.enable(SD)
-		var structure_general = createDental("Diente 1", 0, 0, SD, infoDientesSD);
+		var structure_general = createDental("Incisivo central", 0, 0, SD, infoDientesSD);
 		SD.addChild(structure_general);
-		var structure_general = createDental("Diente 2", 80, 0, SD, infoDientesSD);
+		var structure_general = createDental("Incisivo lateral", 80, 0, SD, infoDientesSD);
 		SD.addChild(structure_general);
 		var structure_general = createDental("Canino", 160, 0, SD, infoDientesSD);
 		SD.addChild(structure_general);
@@ -375,9 +375,9 @@ app.controller('mainController', function($scope, $http){
 
 		II = new createjs.Stage("II");
 		createjs.Touch.enable(II)
-		var structure_general = createDental("Diente 1", 0, 0, II, infoDientesII);
+		var structure_general = createDental("Incisivo central", 0, 0, II, infoDientesII);
 		II.addChild(structure_general);
-		var structure_general = createDental("Diente 2", 80, 0, II, infoDientesII);
+		var structure_general = createDental("Incisivo lateral", 80, 0, II, infoDientesII);
 		II.addChild(structure_general);
 		var structure_general = createDental("Canino", 160, 0, II, infoDientesII);
 		II.addChild(structure_general);
@@ -396,9 +396,9 @@ app.controller('mainController', function($scope, $http){
 
 		ID = new createjs.Stage("ID");
 		createjs.Touch.enable(ID)
-		var structure_general = createDental("Diente 1", 0, 0, ID, infoDientesID);
+		var structure_general = createDental("Incisivo central", 0, 0, ID, infoDientesID);
 		ID.addChild(structure_general);
-		var structure_general = createDental("Diente 2", 80, 0, ID, infoDientesID);
+		var structure_general = createDental("Incisivo lateral", 80, 0, ID, infoDientesID);
 		ID.addChild(structure_general);
 		var structure_general = createDental("Canino", 160, 0, ID, infoDientesID);
 		ID.addChild(structure_general);
