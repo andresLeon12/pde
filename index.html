@@ -56,7 +56,7 @@
                       <div class="col-100 tablet-100">
                         <h1>BIENVENIDO A DENTAPP</h1>
                         <!-- Agregue este boton que se habilita cuando tienes información alamcenada en el telefono -->
-                        <a id="save" href="#" ng-click="Save()" class="center button button-big button-fill button-raised color-teal" style="display: none;">Subir</a>
+                        <a id="save" href="#" ng-click="Save()" class="center button button-big button-fill button-raised color-teal">Subir</a>
                         <div id="online"></div>
                       </div>
                     </div>
@@ -247,11 +247,11 @@
       document.getElementById("online").innerHTML = "<div class='alert alert-danger'>Esperando una conexión de red ...</div>";
     }
     function onOnline() {
-      if(localStorage.getItem("sesiones_guardadas") != null){
+      /*if(localStorage.getItem("sesiones_guardadas") != null){
         $("#save").css("display", "block");
       }else{
         $("#save").css("display", "none");
-      }
+      }*/
       document.getElementById("online").innerHTML = "";
     }
 
