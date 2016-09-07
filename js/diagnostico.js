@@ -8,7 +8,7 @@ $$ = Dom7;
 app.controller('mainController', function($scope, $http){
 	var isSave = true;
 	var movimientos = [], posiciones = [];
-	var dientes, colmillos, muelas, extras, menu, output;
+	var dientes, caninos, muelas, extras, menu, output;
 	var color = "";
 	var datos = JSON.parse(localStorage.getItem('paciente'));
 	$scope.paciente = JSON.parse(localStorage.getItem('paciente'));
@@ -168,7 +168,7 @@ app.controller('mainController', function($scope, $http){
 			break;
 			case "Diente 2": zon = infoDientes.dos;
 			break;
-			case "Colmillo": zon = infoDientes.tres;
+			case "canino": zon = infoDientes.tres;
 			break;
 			case "Premolar 1": zon = infoDientes.cuatro;
 			break;
@@ -292,7 +292,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.mesial.caries = 1;infoDientes.dos.mesial.obturacion = 0;
 							break;
-							case "Colmillo": infoDientes.tres.mesial.caries = 1;infoDientes.tres.mesial.obturacion = 0;
+							case "canino": infoDientes.tres.mesial.caries = 1;infoDientes.tres.mesial.obturacion = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.mesial.caries = 1;infoDientes.cuatro.mesial.obturacion = 0;
 							break;
@@ -323,7 +323,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.mesial.obturacion = 1;infoDientes.dos.mesial.caries = 0;
 							break;
-							case "Colmillo": infoDientes.tres.mesial.obturacion = 1;infoDientes.tres.mesial.caries = 0;
+							case "canino": infoDientes.tres.mesial.obturacion = 1;infoDientes.tres.mesial.caries = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.mesial.obturacion = 1;infoDientes.cuatro.mesial.caries = 0;
 							break;
@@ -385,7 +385,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.distal.caries = 1;infoDientes.dos.distal.obturacion = 0;
 							break;
-							case "Colmillo": infoDientes.tres.distal.caries = 1;infoDientes.tres.distal.obturacion = 0;
+							case "canino": infoDientes.tres.distal.caries = 1;infoDientes.tres.distal.obturacion = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.distal.caries = 1;infoDientes.cuatro.distal.obturacion = 0;
 							break;
@@ -416,7 +416,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.distal.obturacion = 1;infoDientes.dos.distal.caries = 0;
 							break;
-							case "Colmillo": infoDientes.tres.distal.obturacion = 1;infoDientes.tres.distal.caries = 0;
+							case "canino": infoDientes.tres.distal.obturacion = 1;infoDientes.tres.distal.caries = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.distal.obturacion = 1;infoDientes.cuatro.distal.caries = 0;
 							break;
@@ -479,7 +479,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.lengual.caries = 1;infoDientes.dos.lengual.obturacion = 0;
 							break;
-							case "Colmillo": infoDientes.tres.lengual.caries = 1;infoDientes.tres.lengual.obturacion = 0;
+							case "canino": infoDientes.tres.lengual.caries = 1;infoDientes.tres.lengual.obturacion = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.lengual.caries = 1;infoDientes.cuatro.lengual.obturacion = 0;
 							break;
@@ -510,7 +510,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.lengual.obturacion = 1;infoDientes.dos.lengual.caries = 0;
 							break;
-							case "Colmillo": infoDientes.tres.lengual.obturacion = 1;infoDientes.tres.lengual.caries = 0;
+							case "canino": infoDientes.tres.lengual.obturacion = 1;infoDientes.tres.lengual.caries = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.lengual.obturacion = 1;infoDientes.cuatro.lengual.caries = 0;
 							break;
@@ -572,7 +572,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.vestibular.caries = 1;infoDientes.dos.vestibular.obturacion = 0;
 							break;
-							case "Colmillo": infoDientes.tres.vestibular.caries = 1;infoDientes.tres.vestibular.obturacion = 0;
+							case "canino": infoDientes.tres.vestibular.caries = 1;infoDientes.tres.vestibular.obturacion = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.vestibular.caries = 1;infoDientes.cuatro.vestibular.obturacion = 0;
 							break;
@@ -603,7 +603,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.vestibular.obturacion = 1;infoDientes.dos.vestibular.caries = 0;
 							break;
-							case "Colmillo": infoDientes.tres.vestibular.obturacion = 1;infoDientes.tres.vestibular.caries = 0;
+							case "canino": infoDientes.tres.vestibular.obturacion = 1;infoDientes.tres.vestibular.caries = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.vestibular.obturacion = 1;infoDientes.cuatro.vestibular.caries = 0;
 							break;
@@ -666,7 +666,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.oclusal.caries = 1;infoDientes.dos.oclusal.obturacion = 0;
 							break;
-							case "Colmillo": infoDientes.tres.oclusal.caries = 1;infoDientes.tres.oclusal.obturacion = 0;
+							case "canino": infoDientes.tres.oclusal.caries = 1;infoDientes.tres.oclusal.obturacion = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.oclusal.caries = 1;infoDientes.cuatro.oclusal.obturacion = 0;
 							break;
@@ -697,7 +697,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": infoDientes.dos.oclusal.obturacion = 1;infoDientes.dos.oclusal.caries = 0;
 							break;
-							case "Colmillo": infoDientes.tres.oclusal.obturacion = 1;infoDientes.tres.oclusal.caries = 0;
+							case "canino": infoDientes.tres.oclusal.obturacion = 1;infoDientes.tres.oclusal.caries = 0;
 							break;
 							case "Premolar 1": infoDientes.cuatro.oclusal.obturacion = 1;infoDientes.cuatro.oclusal.caries = 0;
 							break;
@@ -744,7 +744,7 @@ app.controller('mainController', function($scope, $http){
 		muelas.addChild(structure_general);
 		var structure_general = createDental("Diente 2", 180, 0, false);
 		muelas.addChild(structure_general);
-		var structure_general = createDental("Colmillo", 360, 0, false);
+		var structure_general = createDental("canino", 360, 0, false);
 		muelas.addChild(structure_general);
 		var structure_general = createDental("Premolar 1", 540, 0, true);
 		muelas.addChild(structure_general);

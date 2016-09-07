@@ -157,7 +157,7 @@ app.controller('mainController', function($scope, $http){
 			break;
 			case "Diente 2": zon = datos.dos;
 			break;
-			case "Colmillo": zon = datos.tres;
+			case "Canino": zon = datos.tres;
 			break;
 			case "Premolar 1": zon = datos.cuatro;
 			break;
@@ -203,7 +203,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": datos.dos.ausente = 1;datos.dos.protesis_fija = 1;datos.dos.protesis_movil = 0;
 							break;
-							case "Colmillo": datos.tres.ausente = 1;datos.tres.protesis_fija = 1;datos.tres.protesis_movil = 0;
+							case "Canino": datos.tres.ausente = 1;datos.tres.protesis_fija = 1;datos.tres.protesis_movil = 0;
 							break;
 							case "Premolar 1": datos.cuatro.ausente = 1;datos.cuatro.protesis_fija = 1;datos.cuatro.protesis_movil = 0;
 							break;
@@ -234,7 +234,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": datos.dos.ausente = 1;datos.dos.protesis_movil = 1;datos.dos.protesis_fija = 0;
 							break;
-							case "Colmillo": datos.tres.ausente = 1;datos.tres.protesis_movil = 1;datos.tres.protesis_fija = 0;
+							case "Canino": datos.tres.ausente = 1;datos.tres.protesis_movil = 1;datos.tres.protesis_fija = 0;
 							break;
 							case "Premolar 1": datos.cuatro.ausente = 1;datos.cuatro.protesis_movil = 1;datos.cuatro.protesis_fija = 0;
 							break;
@@ -265,7 +265,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": datos.dos.ausente = 1;datos.dos.restos = 0;
 							break;
-							case "Colmillo": datos.tres.ausente = 1;datos.tres.restos = 0;
+							case "Canino": datos.tres.ausente = 1;datos.tres.restos = 0;
 							break;
 							case "Premolar 1": datos.cuatro.ausente = 1;datos.cuatro.restos = 0;
 							break;
@@ -296,7 +296,7 @@ app.controller('mainController', function($scope, $http){
 							break;
 							case "Diente 2": datos.dos.restos = 1;datos.dos.ausente = 0;
 							break;
-							case "Colmillo": datos.tres.restos = 1;datos.tres.ausente = 0;
+							case "Canino": datos.tres.restos = 1;datos.tres.ausente = 0;
 							break;
 							case "Premolar 1": datos.cuatro.restos = 1;datos.cuatro.ausente = 0;
 							break;
@@ -337,7 +337,7 @@ app.controller('mainController', function($scope, $http){
 		SI.addChild(structure_general);
 		var structure_general = createDental("Diente 2", 80, 0, SI, infoDientesSI);
 		SI.addChild(structure_general);
-		var structure_general = createDental("Colmillo", 160, 0, SI, infoDientesSI);
+		var structure_general = createDental("Canino", 160, 0, SI, infoDientesSI);
 		SI.addChild(structure_general);
 		var structure_general = createDental("Premolar 1", 240, 0, SI, infoDientesSI);
 		SI.addChild(structure_general);
@@ -358,7 +358,7 @@ app.controller('mainController', function($scope, $http){
 		SD.addChild(structure_general);
 		var structure_general = createDental("Diente 2", 80, 0, SD, infoDientesSD);
 		SD.addChild(structure_general);
-		var structure_general = createDental("Colmillo", 160, 0, SD, infoDientesSD);
+		var structure_general = createDental("Canino", 160, 0, SD, infoDientesSD);
 		SD.addChild(structure_general);
 		var structure_general = createDental("Premolar 1", 240, 0, SD, infoDientesSD);
 		SD.addChild(structure_general);
@@ -379,7 +379,7 @@ app.controller('mainController', function($scope, $http){
 		II.addChild(structure_general);
 		var structure_general = createDental("Diente 2", 80, 0, II, infoDientesII);
 		II.addChild(structure_general);
-		var structure_general = createDental("Colmillo", 160, 0, II, infoDientesII);
+		var structure_general = createDental("Canino", 160, 0, II, infoDientesII);
 		II.addChild(structure_general);
 		var structure_general = createDental("Premolar 1", 240, 0, II, infoDientesII);
 		II.addChild(structure_general);
@@ -400,7 +400,7 @@ app.controller('mainController', function($scope, $http){
 		ID.addChild(structure_general);
 		var structure_general = createDental("Diente 2", 80, 0, ID, infoDientesID);
 		ID.addChild(structure_general);
-		var structure_general = createDental("Colmillo", 160, 0, ID, infoDientesID);
+		var structure_general = createDental("Canino", 160, 0, ID, infoDientesID);
 		ID.addChild(structure_general);
 		var structure_general = createDental("Premolar 1", 240, 0, ID, infoDientesID);
 		ID.addChild(structure_general);
