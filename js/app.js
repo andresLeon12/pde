@@ -6,7 +6,7 @@ var application = new Framework7({
 // Controlador de login
 //var urlServidor = "http://159.203.128.165:3000/";
 //var urlServidor = "http://127.0.0.1:8080/";
-var urlServidor = "http://192.168.0.103:3000/";
+var urlServidor = "http://192.168.0.32:3000/";
 // Elección de la zona individual a editar
 var buttons = [
     {
@@ -263,7 +263,7 @@ app.controller('pacienteController', function($scope, $http){
       }
       localStorage.removeItem("pacientes_guardados");
       localStorage.removeItem("sesiones_guardadas");
-      $("#save").css("display", "none");
+      //$("#save").css("display", "none");
       $("#cargando").css("display", "none");
       application.addNotification({
                 message: 'Información guardada',
