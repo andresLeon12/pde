@@ -245,7 +245,6 @@ app.controller('pacienteController', function($scope, $http){
             });
         }*/
         //Fin guardar fotos del perfil del paciente **********************************************
-        alert("URL: "+urlServidor);
         for(i in pacientes_guardados) {
           $http.post(urlServidor+"paciente/nuevoPaciente", pacientes_guardados[i]).success(function(respuesta) {
             if(respuesta.status){
